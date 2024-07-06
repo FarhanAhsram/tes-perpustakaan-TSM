@@ -1,0 +1,25 @@
+{
+  "data_buku": [
+    {
+      "id": "BK001",
+      "judul": "Malin Kundang",
+      "pengarang": "Abdul",
+      "tahun": "2024",
+      "genre": "Fiksi"
+    },
+    {
+      "id": "BK002",
+      "judul": "Sangkuriang",
+      "pengarang": "Abdul",
+      "tahun": "2012",
+      "genre": "Fiksi"
+    },
+    {
+      "id": "BK003",
+      "judul": "Bawang Merah Bawang Putih",
+      "pengarang": "Anwar",
+      "tahun": "2008",
+      "genre": "Non-Fiksi"
+    }
+  ]
+}
