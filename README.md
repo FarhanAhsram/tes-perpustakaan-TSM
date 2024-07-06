@@ -1,5 +1,9 @@
 # Tes Perpustakaan TSM
 
+Clone the project then install the dependencies using this code
+```
+npm install
+```
 ## Run Project
 
 Open project folder then run this code below in the terminal
