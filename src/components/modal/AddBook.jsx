@@ -52,6 +52,7 @@ export default function AddBook({ handleModalAdd, getBooks }) {
       ...form,
       [name]: value,
     });
+
     setErrors({
       ...errors,
       [name]: "",
