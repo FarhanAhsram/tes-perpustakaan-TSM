@@ -15,6 +15,8 @@ import * as Yup from "yup";
 /* eslint-disable react/prop-types */
 
 export default function AddBook({ handleModalAdd, getBooks }) {
+  const Genres = ["Fantasi", "Horor", "Self-Help", "Sejarah", "Biografi"];
+
   const [form, setForm] = useState({
     id: "",
     judul: "",
@@ -26,24 +28,24 @@ export default function AddBook({ handleModalAdd, getBooks }) {
 
   const validationSchema = Yup.object({
     id: Yup.string()
-      .matches(/^[A-Za-z0-9\s]+$/, "ID must not contain symbols")
-      .test("unique", "ID must be unique", async function (value) {
+      .matches(/^[A-Za-z0-9\s]+$/, "ID tidak dapat memuat simbol")
+      .test("unique", "ID harus unik", async function (value) {
         const response = await axios.get("http://localhost:8000/data_buku");
         const books = response.data;
         const isDuplicate = books.some((book) => book.id === value);
         return !isDuplicate;
       })
-      .required("ID is required"),
+      .required("ID harus diisi"),
     judul: Yup.string()
-      .matches(/^[A-Za-z0-9\s]+$/, "Judul must not contain symbols")
-      .required("Judul is required"),
+      .matches(/^[A-Za-z0-9\s]+$/, "Judul tidak dapat memuat simbol")
+      .required("Judul harus diisi"),
     pengarang: Yup.string()
-      .matches(/^[A-Za-z0-9\s]+$/, "Pengarang must not contain symbols")
-      .required("Pengarang is required"),
+      .matches(/^[A-Za-z0-9\s]+$/, "Pengarang tidak dapat memuat simbol")
+      .required("Pengarang harus diisi"),
     tahun: Yup.number()
-      .typeError("Tahun must be a valid number")
-      .required("Tahun is required"),
-    genre: Yup.string().required("Genre is required"),
+      .typeError("Tahun harus dalam bentuk angka")
+      .required("Tahun harus diisi"),
+    genre: Yup.string().required("Genre harus diisi"),
   });
 
   const handleCreateBookChange = (e) => {
@@ -68,8 +70,8 @@ export default function AddBook({ handleModalAdd, getBooks }) {
       await axios.post("http://localhost:8000/data_buku", form);
 
       Swal.fire({
-        title: "Book Added Successfully",
-        text: "The book has been added successfully!",
+        title: "Berhasil Tambahkan Buku",
+        text: "Buku tersimpan dalam data",
         icon: "success",
         confirmButtonText: "OK",
       });
@@ -97,7 +99,7 @@ export default function AddBook({ handleModalAdd, getBooks }) {
     <div className="flex justify-center items-center fixed top-0 left-0 w-full h-full bg-[#22252EAD] opacity-100 z-10">
       <div className="bg-[#FFFFFF] w-1/2 rounded-2xl p-7 max-md:w-3/4">
         <div className="flex justify-between items-center">
-          <h1 className="font-bold text-2xl">Add Book</h1>
+          <h1 className="font-bold text-2xl">Tambah Buku</h1>
           <svg
             width="14"
             height="14"
@@ -200,15 +202,17 @@ export default function AddBook({ handleModalAdd, getBooks }) {
                   <SelectValue placeholder="Genre" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Fiksi">Fiksi</SelectItem>
-                  <SelectItem value="Non-Fiksi">Non-Fiksi</SelectItem>
-                  <SelectItem value="Mitos">Mitos</SelectItem>
+                  {Genres.map((genre, index) => (
+                    <SelectItem key={index} value={genre}>
+                      {genre}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
               {errors.genre && <p className="text-red-500">{errors.genre}</p>}
             </div>
             <div className="flex justify-end gap-6">
-              <Button type="submit">Add</Button>
+              <Button type="submit">Tambah</Button>
             </div>
           </form>
         </div>

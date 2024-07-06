@@ -21,6 +21,8 @@ export default function EditBook({
   editedBook,
   setEditedBook,
 }) {
+  const Genres = ["Fantasi", "Horor", "Self-Help", "Sejarah", "Biografi"];
+
   const [errors, setErrors] = useState({});
 
   const validationSchema = Yup.object({
@@ -63,8 +65,8 @@ export default function EditBook({
       );
 
       Swal.fire({
-        title: "Book Updated Successfully",
-        text: "The book has been updated successfully!",
+        title: "Buku Berhasil Diperbarui",
+        text: "Pembaruan tersimpan",
         icon: "success",
         confirmButtonText: "OK",
       });
@@ -92,7 +94,7 @@ export default function EditBook({
     <div className="flex justify-center items-center fixed top-0 left-0 w-full h-full bg-[#22252EAD] opacity-100 z-10">
       <div className="bg-[#FFFFFF] w-1/2 rounded-2xl p-7 max-md:w-3/4">
         <div className="flex justify-between items-center">
-          <h1 className="font-bold text-2xl">Edit Book</h1>
+          <h1 className="font-bold text-2xl">Sunting Buku</h1>
           <svg
             width="14"
             height="14"
@@ -116,6 +118,20 @@ export default function EditBook({
 
         <div>
           <form action="" onSubmit={handleEditBookSubmit}>
+            <div className="mb-4">
+              <Label htmlFor="judul">
+                ID Buku<span className="text-red-500">*</span>
+              </Label>
+              <Input
+                type="text"
+                id="judul"
+                name="judul"
+                className="mt-2"
+                placeholder="Judul Buku"
+                value={editedBook.id}
+                disabled
+              />
+            </div>
             <div className="mb-4">
               <Label htmlFor="judul">
                 Judul Buku <span className="text-red-500">*</span>
@@ -178,15 +194,17 @@ export default function EditBook({
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectItem value="Fiksi">Fiksi</SelectItem>
-                    <SelectItem value="Non-Fiksi">Non-Fiksi</SelectItem>
-                    <SelectItem value="Mitos">Mitos</SelectItem>
+                    {Genres.map((genre, index) => (
+                      <SelectItem key={index} value={genre}>
+                        {genre}
+                      </SelectItem>
+                    ))}
                   </SelectGroup>
                 </SelectContent>
               </Select>
             </div>
             <div className="flex justify-end gap-6">
-              <Button type="submit">Edit</Button>
+              <Button type="submit">Sunting</Button>
             </div>
           </form>
         </div>

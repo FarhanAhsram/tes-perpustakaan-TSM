@@ -2,7 +2,7 @@
 
 ## Run Project
 
-Open project folder then run this code below
+Open project folder then run this code below in the terminal
 
 ```
 npm run dev
@@ -10,7 +10,7 @@ npm run dev
 
 ## Run Database (Dummy JSON)
 
-Open folder "data" and start another terminal there. Then run this code below
+Open "data" folder and start another terminal there. Then run this code below
 
 ```
 npx json-server --watch db.json --port 8000

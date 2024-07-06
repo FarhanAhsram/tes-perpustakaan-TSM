@@ -1,4 +1,4 @@
-import { Edit, Trash } from "lucide-react";
+import { Edit, NotebookText, Trash } from "lucide-react";
 import { Button } from "./components/ui/button";
 import {
   Table,
@@ -42,12 +42,12 @@ function App() {
 
   const handleDeleteBook = (id) => {
     Swal.fire({
-      title: "Delete Book?",
-      text: "Are you sure you want to delete it?",
+      title: "Hapus Buku?",
+      text: "Apakah anda yakin ingin menghapus buku?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes",
-      cancelButtonText: "Cancel",
+      confirmButtonText: "Ya",
+      cancelButtonText: "Batal",
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
     }).then((result) => {
@@ -56,8 +56,8 @@ function App() {
           .delete(`http://localhost:8000/data_buku/${id}`)
           .then(() => {
             Swal.fire({
-              title: "Food Deleted Successfully",
-              text: "Book Deleted",
+              title: "Buku Berhasil Dihapus",
+              text: "Buku dihapus dari data",
               icon: "success",
               confirmButtonText: "OK",
             });
@@ -92,32 +92,25 @@ function App() {
   }, [sortBy]);
 
   return (
-    <div className="bg-gray-500 p-4 h-screen">
+    <div className="bg-gray-500 p-4">
       <div className="bg-white rounded-lg py-4 px-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold underline">Library Data</h1>
-          <Button onClick={handleModalAdd}>Add Book</Button>
+          <h1 className="flex items-center text-2xl font-bold gap-2">
+            <NotebookText></NotebookText>
+            Library Data
+          </h1>
+          <Button onClick={handleModalAdd}>Tambah Buku</Button>
         </div>
         <div className="flex gap-4 my-4">
           <Input
             className="w-full"
-            placeholder="Search (masukkan judul buku atau pengarang)"
+            placeholder="Cari (masukkan judul buku atau pengarang)"
             value={searchBook}
             onChange={(e) => setSearchBook(e.target.value)}
           />
-          <Select>
-            <SelectTrigger className="w-1/5">
-              <SelectValue placeholder="Filter" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="id">None</SelectItem>
-              <SelectItem value="genre">Genre</SelectItem>
-              <SelectItem value="tahun">Tahun Terbit</SelectItem>
-            </SelectContent>
-          </Select>
           <Select onValueChange={(value) => setSortBy(value)} value={sortBy}>
-            <SelectTrigger className="w-1/5">
-              <SelectValue placeholder="Sort By" />
+            <SelectTrigger className="w-1/4">
+              <SelectValue placeholder="Urut Berdasarkan" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="id">None</SelectItem>
@@ -129,10 +122,10 @@ function App() {
         <div className="mb-4">
           <Table>
             <TableHeader className="bg-gray-300">
-              <TableRow>
+              <TableRow className="text-lg">
                 <TableHead>No.</TableHead>
-                <TableHead>ID Buku</TableHead>
-                <TableHead>Judul Buku</TableHead>
+                <TableHead>ID</TableHead>
+                <TableHead>Judul</TableHead>
                 <TableHead>Pengarang</TableHead>
                 <TableHead>Tahun Terbit</TableHead>
                 <TableHead>Genre</TableHead>
@@ -153,7 +146,7 @@ function App() {
                       .includes(searchBook.toLowerCase())
                 )
                 .map((book, index) => (
-                  <TableRow key={index}>
+                  <TableRow key={index} className="text-base">
                     <TableCell>{index + 1}</TableCell>
                     <TableCell>{book.id}</TableCell>
                     <TableCell>{book.judul}</TableCell>

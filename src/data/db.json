@@ -2,24 +2,66 @@
   "data_buku": [
     {
       "id": "BK001",
-      "judul": "Malin Kundang",
-      "pengarang": "Abdul",
-      "tahun": "2024",
-      "genre": "Fiksi"
+      "judul": "Twilight",
+      "pengarang": "Stephenie Meyer ",
+      "tahun": "2005",
+      "genre": "Fantasi"
     },
     {
       "id": "BK002",
-      "judul": "Sangkuriang",
-      "pengarang": "Abdul",
-      "tahun": "2012",
-      "genre": "Fiksi"
+      "judul": "Atomic Habits",
+      "pengarang": "James Clear",
+      "tahun": "2018",
+      "genre": "Self-Help"
     },
     {
       "id": "BK003",
-      "judul": "Bawang Merah Bawang Putih",
-      "pengarang": "Anwar",
-      "tahun": "2008",
-      "genre": "Non-Fiksi"
+      "judul": "The Haunting of Hill House",
+      "pengarang": "Shirly Jackson",
+      "tahun": "1959",
+      "genre": "Horor"
+    },
+    {
+      "id": "BK004",
+      "judul": "Mark Zuckerberg",
+      "pengarang": "Austin Mathis",
+      "tahun": "2019",
+      "genre": "Biografi"
+    },
+    {
+      "id": "BK005",
+      "judul": "The History of Java",
+      "pengarang": "Sir Thomas Stamford Raffles",
+      "tahun": "1830",
+      "genre": "Sejarah"
+    },
+    {
+      "id": "BK006",
+      "judul": "One Piece",
+      "pengarang": "Eiichiro Oda",
+      "tahun": "1997",
+      "genre": "Fantasi"
+    },
+    {
+      "id": "BK007",
+      "judul": "The Devil All the Time",
+      "pengarang": "Donald Ray Pollock",
+      "tahun": "2022",
+      "genre": "Horor"
+    },
+    {
+      "id": "BK008",
+      "judul": "Jack Ma and Alibaba",
+      "pengarang": "Yan Qicheng",
+      "tahun": "2017",
+      "genre": "Biografi"
+    },
+    {
+      "id": "BK009",
+      "judul": "The 48 Laws of Power",
+      "pengarang": "Robert Greene",
+      "tahun": "1998",
+      "genre": "Self-Help"
     }
   ]
 }
